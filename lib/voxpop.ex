@@ -1,10 +1,11 @@
 defmodule Voxpop do
   use Application
 
-  alias Voxpop.Grammar
+  alias Voxpop.Grammar.Generator
+  alias Voxpop.Grammar.Definition
 
-  def generate(%Grammar{}=grammar, context \\ %{}) do
-    Grammar.generate(grammar, context)
+  def generate(%Definition{}=definition, context \\ %{}) do
+    Generator.generate(definition, context)
   end
 
   # See http://elixir-lang.org/docs/stable/elixir/Application.html
