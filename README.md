@@ -43,3 +43,19 @@ end
 
 MyGrammar.evaluate
 ```
+
+## Plans
+The plan is to make Voxpop powerful enough that it can generate text for
+sophisticated applications like chat user interfaces. That is going to take a
+few steps:
+
+ - [ ] [Weighted Choices][weighted choices]
+ - [ ] [Dynamic generation with generation-time context][dynamic generation]
+ - [ ] [Per-generation repetition avoidance in choices][repetition avoidance]
+ - [ ] [Loading grammars from JSON or other format][load grammars]
+ - [ ] Visualising evaluated AST
+ - [ ] OTP application to reduce the requirement to rebuild grammars loaded at runtime
+
+ [dynamic generation]: https://github.com/zovafit/voxpop/issues/4
+ [repetition avoidance]: https://github.com/zovafit/voxpop/issues/5
+ [load grammars]: https://github.com/zovafit/voxpop/issues/6
