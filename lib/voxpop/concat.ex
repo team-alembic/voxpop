@@ -13,7 +13,6 @@ defmodule Voxpop.Concat do
   defp do_parse(rule, [{pos, length} | matches], offset) do
     keep = pos - offset
     new_offset = pos + length
-    IO.puts keep
 
     << _ :: binary-size(offset), part::binary-size(keep), token::binary-size(length), _::binary>> = rule
     [wrap_text(part) | [extract_key(token) | do_parse(rule, matches, new_offset)]]
