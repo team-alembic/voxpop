@@ -6,6 +6,11 @@ defmodule Voxpop.Registry do
     registry.rules[:start] |> Voxpop.Production.evaluate(registry)
   end
 
+  def parse(definition) do
+    add_rules(definition.rules)
+    |> add_rule(:start, definition.start)
+  end
+
   def add_rules(rules) do
     add_rules(%Voxpop.Registry{}, rules)
   end

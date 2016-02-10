@@ -3,22 +3,22 @@ defmodule Voxpop.Grammar.Generator do
 
   def generate(definition, _context \\ %{}) do
     case definition.registry do
-      nil -> Registry.add_rules(definition.rules) |> Registry.add_rule(:start, definition.start)
-    end |> Registry.evaluate
-
+      nil -> Registry.parse(definition) |> Registry.evaluate
+      %Registry{} -> Registry.evaluate(definition.registry)
+    end
   end
+
 end
 
 defmodule Voxpop.Grammar do
-  import Voxpop.Grammar.Generator
+  alias Voxpop.Grammar.Generator
 
   defmacro __using__(_opts) do
     quote do
       import Voxpop.Grammar
 
-      @rules %{}
-      @start ""
-
+      @registry %Voxpop.Registry{}
+ 
       @before_compile unquote(__MODULE__)
 
     end
@@ -26,20 +26,20 @@ defmodule Voxpop.Grammar do
 
   defmacro rule(key, rule) do
     quote do
-      @rules Map.put(@rules, unquote(key), unquote(rule))
+      @registry Voxpop.Registry.add_rule(@registry, unquote(key), unquote(rule))
     end
   end
 
   defmacro start(rule) do
     quote do
-      @start unquote(rule)
+      @registry Voxpop.Registry.add_rule(@registry, :start, unquote(rule))
     end
   end
 
   defmacro __before_compile__(_env) do
     quote do
       def generate do
-        Voxpop.Grammar.Generator.generate %Voxpop.Grammar.Definition{start: @start, rules: @rules}
+        Generator.generate %Voxpop.Grammar.Definition{registry: @registry}
       end
     end
   end
