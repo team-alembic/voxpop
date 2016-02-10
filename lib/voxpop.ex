@@ -1,6 +1,12 @@
 defmodule Voxpop do
   use Application
 
+  alias Voxpop.Grammar
+
+  def generate(%Grammar{}=grammar, context \\ %{}) do
+    Grammar.generate(grammar, context)
+  end
+
   # See http://elixir-lang.org/docs/stable/elixir/Application.html
   # for more information on OTP Applications
   def start(_type, _args) do
