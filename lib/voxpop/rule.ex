@@ -1,9 +1,9 @@
 defmodule Voxpop.Rule do
 
   def parse(rule) when is_binary(rule) do
-    case Regex.run(~r/{\w+}/, rule, return: :index) do
-      nil -> %Voxpop.Terminal{atom: rule}
-      matches -> Voxpop.Concat.parse(rule, matches)
+    case Regex.scan(~r/{\w+}/, rule, return: :index) do
+      [] -> %Voxpop.Terminal{atom: rule}
+      matches -> Voxpop.Concat.parse(rule, List.flatten(matches))
     end
   end
 
