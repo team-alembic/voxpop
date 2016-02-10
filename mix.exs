@@ -7,7 +7,10 @@ defmodule Voxpop.Mixfile do
      elixir: "~> 1.2",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
-     deps: deps]
+     deps: deps,
+     package: package,
+     description: description
+    ]
   end
 
   # Configuration for the OTP application
@@ -16,6 +19,21 @@ defmodule Voxpop.Mixfile do
   def application do
     [applications: [:logger],
      mod: {Voxpop, []}]
+  end
+
+  defp package do
+    [
+      files: ["lib", "mix.exs", "README*", "LICENSE"],
+      maintainers: ["Andrew Harvey"],
+      licenses: ["MIT"],
+      links: %{"GitHub": "https://github.com/zovafit/voxpop"}
+    ]
+  end
+
+  defp description do
+    """
+    Voxpop generates text from declarative grammars.
+    """
   end
 
   # Dependencies can be Hex packages:
