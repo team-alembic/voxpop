@@ -20,12 +20,26 @@ The API is still currently in flux while I work some things out, but in the gene
 case, you do things like this:
 
 ```elixir
-iex> Voxpop.generate %Voxpop.Grammar{start: "Hello {greeting}!", rules: %{greeting: "world"}}
+iex> Voxpop.generate %Voxpop.Grammar.Definition{start: "Hello {greeting}!", rules: %{greeting: "world"}}
 "Hello World"
 ```
 
 Your rules can have multiple options which will be randomly chosen:
 
 ```elixir
-%Voxpop.Grammar{start: "Hello {group}!", rules: %{group: ["comrades", "folks", "friends"]}}
+%Voxpop.Grammar.Definition{start: "Hello {group}!", rules: %{group: ["comrades", "folks", "friends"]}}
+```
+
+There is also a DSL, if you'd prefer to define your grammar as part of a module:
+
+```elixir
+defmodule MyGrammar do
+  use Voxpop.Grammar
+
+  start "{greeting} {group}!"
+  rule :greeting, "Hello"
+  rule :group, "World"
+end
+
+MyGrammar.evaluate
 ```
