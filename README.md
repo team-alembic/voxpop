@@ -40,4 +40,6 @@ defmodule MyGrammar do
   rule :greeting, "Hello"
   rule :group, "World"
 end
+
+MyGrammar.evaluate
 ```
