@@ -56,6 +56,7 @@ few steps:
  - [ ] Visualising evaluated AST
  - [ ] OTP application to reduce the requirement to rebuild grammars loaded at runtime
 
+ [weighted choices]: https://github.com/zovafit/voxpop/issues/2
  [dynamic generation]: https://github.com/zovafit/voxpop/issues/4
  [repetition avoidance]: https://github.com/zovafit/voxpop/issues/5
  [load grammars]: https://github.com/zovafit/voxpop/issues/6
