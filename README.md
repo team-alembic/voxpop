@@ -44,6 +44,12 @@ end
 MyGrammar.evaluate
 ```
 
+You can also evaluate using a run-time defined start rule:
+
+```
+MyGrammar.evaluate("{group}, {greeting}!")
+```
+
 ## Plans
 The plan is to make Voxpop powerful enough that it can generate text for
 sophisticated applications like chat user interfaces. That is going to take a
