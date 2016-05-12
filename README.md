@@ -11,7 +11,7 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
   1. Add voxpop to your list of dependencies in `mix.exs`:
 
         def deps do
-          [{:voxpop, "~> 0.0.1"}]
+          [{:voxpop, "~> 0.0.2"}]
         end
 
 ## Usage
