@@ -41,6 +41,11 @@ defmodule Voxpop.Grammar do
       def generate do
         Generator.generate %Voxpop.Grammar.Definition{registry: @registry}
       end
+
+      def generate(start) when is_binary(start) do
+        registry = Voxpop.Registry.add_rule(@registry, :start, start)
+        Generator.generate %Voxpop.Grammar.Definition{registry: registry}
+      end
     end
   end
 
