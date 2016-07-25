@@ -46,6 +46,11 @@ defmodule Voxpop.Grammar do
         registry = Voxpop.Registry.add_rule(@registry, :start, start)
         Generator.generate %Voxpop.Grammar.Definition{registry: registry}
       end
+
+      def generate(context) when is_list(context) do
+        registry = Voxpop.Registry.add_rules(@registry, context)
+        Generator.generate %Voxpop.Grammar.Definition{registry: registry}
+      end
     end
   end
 

@@ -17,4 +17,8 @@ defmodule Voxpop.GrammarTest do
   test "generating from runtime string" do 
     assert MyGrammar.generate("{group}, {greeting}!") == "World, Hello!"
   end
+
+  test "generating with runtime contest" do
+    assert "Hello Friends!" == MyGrammar.generate(group: "Friends")
+  end
 end
