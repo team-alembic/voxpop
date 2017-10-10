@@ -21,4 +21,9 @@ defmodule VoxpopTest do
     concat_grammar = %Voxpop.Grammar.Definition{start: "{greeting} world", rules: %{greeting: "Hello"}}
     assert Voxpop.generate(concat_grammar) == "Hello world"
   end
+
+  test "gracefully handles missing rules" do
+    concat_grammar = %Voxpop.Grammar.Definition{start: "{greeting} world", rules: %{greeting: "Hello {invalid}"}}
+    assert Voxpop.generate(concat_grammar) == "Hello "
+  end
 end
